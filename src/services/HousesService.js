@@ -20,6 +20,16 @@ class HousesService {
         const indexToUpdate = AppState.houses.findIndex(house => house.id == updateHouse.id)
         AppState.houses.splice(indexToUpdate, 1, new House(response.data))
     }
+    async deleteHouse(houseId) {
+        const response = await api.delete(`api/houses/${houseId}`)
+        console.log('deleting car in service', response.data);
+        const indexToRemove = AppState.houses.findIndex(house => house.id == houseId)
+        AppState.houses.splice(indexToRemove, 1)
+    }
+    setActiveHouse(houseId) {
+        const selectedHouse = AppState.houses.find(house => house.id == houseId)
+        AppState.activeHouse = selectedHouse
+    }
 }
 
 export const housesService = new HousesService()

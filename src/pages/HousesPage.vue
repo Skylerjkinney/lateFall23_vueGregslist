@@ -19,6 +19,12 @@
 
       </div>
     </section>
+
+
+    <ModalWrapper modalId="edit-house-modal">
+      <div>Edit House</div>
+      <HouseForm :editHouseData="activeHouse" />
+    </ModalWrapper>
   </div>
 </template>
 
@@ -45,7 +51,8 @@ export default {
     }
     return {
       houses: computed(() => AppState.houses),
-      account: computed(() => AppState.account)
+      account: computed(() => AppState.account),
+      activeHouse: computed(() => AppState.activeHouse)
     }
   },
   components: { HouseCard, ModalWrapper, HouseForm }
